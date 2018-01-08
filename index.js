@@ -18,10 +18,10 @@ app.use(cors({origin:'http://localhost:4200'}));
 
 //app.use(morgan('dev'));
 
-//app.use(express.static(__dirname+'/public'));
+app.use(express.static(__dirname+'/public'));
 
 app.get('*',(req,res)=>{
-//res.sendFile(path.join(__dirname+'/public/index.html'));
+res.sendFile(path.join(__dirname+'/public/index.html'));
 
 });
 
