@@ -1,6 +1,6 @@
-#  #  angular2-chat  
+#  #  Angular-chatbox  
 This is a simple chat applicaiton built with Angular 2 and Socket.io. Users can message each other in real-time.  
 ##  Build With  
--Angular 2  
+-Angular     
 -NodeJs    
 -Socket.io
