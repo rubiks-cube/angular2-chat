@@ -15,19 +15,32 @@ private socket;
 
 
 
-   sendMessage(message, username) {
-    this.socket.emit('add-message', message, username);
+   sendMessage(message, username,time) {
+    this.socket.emit('add-message', message, username,time);
     this.socket.emit('users');
   }
 
 saveUsername(username) {
     this.socket.emit('saveUser', username);
-   
+   let observable = new Observable(observer => {
+      this.socket = io(environment.apiUrl);
+      this.socket.on('msg', (data) => {
+        console.log(data);
+        observer.next(data);
+      });
+      return () => {
+        this.socket.disconnect();
+      };
+    });
+    return observable;
     
   }
 
 
+getStatus(){
+ 
 
+}
 
   
 

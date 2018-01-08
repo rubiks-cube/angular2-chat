@@ -13,7 +13,7 @@ messages = [];
   connectionUsers;
   
   message;
-  message1=null;
+  message1;
   username;
   load=false;
   messageClass;
@@ -21,8 +21,8 @@ messages = [];
   users;
 check=[];
 status;
-
-
+x;
+time;
 
   constructor(private chatService:ChatService) { }
 
@@ -33,7 +33,9 @@ status;
   }
 
   sendMessage() {
-    this.chatService.sendMessage(this.message, this.username);
+    this. time='('+this.timeNow()+')';
+    
+    this.chatService.sendMessage(this.message, this.username,this.time);
     this.message = '';
     if (this.messages.length > 8) this.messages.splice(0, 1);
   }
@@ -51,7 +53,7 @@ status;
      
     });
     
-    
+   this.saveUsername();
     
   }
 
@@ -60,22 +62,41 @@ status;
    
    
    
+   this. x=this.userInput;
+//console.log(this.x);
+  
+   	this.chatService.saveUsername(this.userInput).subscribe(data=>{
+//console.log(data['sta']);
+// console.log(this.x);
+    if(data['sta']=='f'){
+    //  console.log(data['alert']);
+      this.message1=data['alert'];
+    //  console.log(this.message1);
+      this.messageClass='alert alert-danger';
+      this.userInput='';
+    }else if(data['sta']=='t'){
+      this.message1='Hi '+this.x+'!';
+      //console.log(this.message1);
+      this.messageClass='alert alert-success';
+      this.username=this.x;
+    }
+});
    
-   	this.chatService.saveUsername(this.userInput);
-   	 this.username=this.userInput;
-   
-
    
   
 
 }
   
 
-
-  
-
-
-
+timeNow() {
+  var d = new Date(),
+      h = (d.getHours()<10?'0':'') + d.getHours(),
+      m = (d.getMinutes()<10?'0':'') + d.getMinutes(),
+      s=d.getSeconds();
+ 
+ var value = h + ':' + m+ ':'+s;
+ return value;
+}
 
     
     

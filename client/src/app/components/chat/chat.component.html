@@ -1,3 +1,15 @@
+<div class="row show-hide-message">
+  <div [ngClass]="messageClass">
+    {{message1}}
+  </div>
+</div>
+
+
+
+
+
+
+
 <div *ngIf="!username" class="col-lg-6">
   <form name="userInputForm" (submit)="saveUsername()">
     <div class="form-group">
@@ -23,7 +35,7 @@
     </div>
 
     <p *ngFor="let message of messages">
-      <strong><span class="glyphicon glyphicon-user"></span> {{ message.username }}</strong> {{message.text}}
+      <strong><span class="glyphicon glyphicon-user"></span> {{ message.username }}</strong> {{message.text}} <small> {{message.time}}</small>
     </p>
 
   </div>
