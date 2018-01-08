@@ -48,7 +48,7 @@ status;
     this.connectionUsers = this.chatService.getUsers().subscribe(data => {
       this.users = data;
        
-      this.check=this.users;
+     
     });
     
     
@@ -58,16 +58,12 @@ status;
   saveUsername() {
    
    
-   console.log(this.check);
-  console.log( this.check.indexOf(this.userInput));
-   if(this.check.indexOf(this.userInput)>-1 ){
-console.log('lolol');
-   }
    
-   else{
+   
+   
    	this.chatService.saveUsername(this.userInput);
    	 this.username=this.userInput;
-   }
+   
 
    
   
